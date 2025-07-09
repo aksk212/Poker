@@ -1,0 +1,186 @@
+{%- liquid
+  assign social_icons = false
+  if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_tiktok_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank
+    assign social_icons = true
+  endif
+-%}
+
+<footer class="footer gradient">
+  <div class="footer__content page-width">
+    <div class="footer__section">
+      <h3>Poke.Trendz</h3>
+      <p>Ihre Quelle für trendige Mode und Lifestyle-Produkte. Wir bieten Ihnen die neuesten Styles und höchste Qualität.</p>
+      {%- if social_icons -%}
+        <ul class="footer__list-social list-unstyled list-social" role="list">
+          {%- if settings.social_facebook_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_facebook_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-facebook' -%}
+                <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_instagram_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_instagram_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-instagram' -%}
+                <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_tiktok_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-tiktok' -%}
+                <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_twitter_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_twitter_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-twitter' -%}
+                <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_pinterest_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_pinterest_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-pinterest' -%}
+                <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_snapchat_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_snapchat_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-snapchat' -%}
+                <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_tumblr_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_tumblr_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-tumblr' -%}
+                <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_vimeo_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_vimeo_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-vimeo' -%}
+                <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_youtube_link != blank -%}
+            <li class="list-social__item">
+              <a href="{{ settings.social_youtube_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                {%- render 'icon-youtube' -%}
+                <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="footer__section">
+      <h3>{{ 'templates.footer.contact_info' | t }}</h3>
+      <p>📧 info@poke-trendz.com</p>
+      <p>📞 +49 123 456 789</p>
+      <p>📍 Musterstraße 123, 12345 Musterstadt</p>
+    </div>
+
+    <div class="footer__section">
+      <h3>{{ 'templates.footer.service' | t }}</h3>
+      <ul class="footer__list list-unstyled">
+        <li><a href="{{ routes.root_url }}pages/shipping-returns" class="link link--text">{{ 'templates.footer.shipping_returns' | t }}</a></li>
+        <li><a href="{{ routes.root_url }}pages/size-guide" class="link link--text">{{ 'templates.footer.size_guide' | t }}</a></li>
+        <li><a href="{{ routes.root_url }}pages/faq" class="link link--text">{{ 'templates.footer.faq' | t }}</a></li>
+        <li><a href="{{ routes.root_url }}pages/privacy-policy" class="link link--text">{{ 'templates.footer.privacy_policy' | t }}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__section">
+      <h3>{{ 'templates.footer.newsletter' | t }}</h3>
+      <p>{{ 'templates.footer.newsletter_description' | t }}</p>
+      {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="newsletter-form__field-wrapper">
+          <div class="field">
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="field__input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactFooter-error"
+              {%- endif -%}
+              placeholder="{{ 'newsletter.email_placeholder' | t }}"
+              required
+            >
+            <label class="field__label" for="NewsletterForm--{{ section.id }}">
+              {{ 'newsletter.email_placeholder' | t }}
+            </label>
+          </div>
+          {%- if form.errors -%}
+            <small class="newsletter-form__message form__message--error" id="ContactFooter-error">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </small>
+          {%- endif -%}
+        </div>
+        <button type="submit" class="button button--primary" name="commit" id="Subscribe">
+          {{ 'newsletter.button_label' | t }}
+        </button>
+        {%- if form.posted_successfully? -%}
+          <p class="form-status form-status--success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+
+  <div class="footer__bottom page-width">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'templates.footer.all_rights_reserved' | t }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "default": true,
+      "label": "t:sections.footer.settings.show_payment_icons.label"
+    }
+  ]
+}
+{% endschema %}
